@@ -1,0 +1,103 @@
+%% Blank Wiley (WileyNJDv5) article skeleton, trimmed to fields this app collects.
+%%
+%% Compiler note: Wiley requires XeLaTeX (not pdfLaTeX) for font
+%% compatibility - flag this to whatever compiles the final output.
+%%
+%% Documentclass options select citation style and column layout:
+%%   HARVARD / AMA / VANCOUVER / NUMBERED -> FormData.referencingStyle
+%%   LATO2COL (two-column), LATO1COL (one-column) or Times1COL (one-column, Times font), Times2COL (two-column,Times font)
+%%   -> FormData.columnLayout
+\documentclass[HARVARD,LATO2COL]{WileyNJDv5}
+
+%% Journal/article metadata - leave empty; not driven by FormData.
+\articletype{}%
+\received{}
+\revised{}
+\accepted{}
+\journal{}
+\volume{}
+\copyyear{}
+\startpage{}
+
+%% keeps page bottoms ragged rather than stretched to align; not tied to
+%% any FormData field, just always used.
+\raggedbottom
+
+\begin{document}
+
+%% Title -> FormData.title
+\title{}
+
+%% One \author[n]{} + matching \address[n]{} pair per entry in
+%% FormData.authors. Start n at 1 and increment for each author; if two
+%% authors share the same affiliation, reuse the same [n]. Repeat this
+%% pattern once per author.
+%% Build the displayed name from firstName + lastName.
+\author[1]{}
+\address[1]{\orgdiv{}, \orgname{}, \orgaddress{\state{}, \country{}}}
+
+%% Running-header short author list (e.g. "Smith et al.") and short title.
+\authormark{}
+\titlemark{}
+
+%% Corresponding author note. Use the author where corresponding === true:
+%% include their name, address, and email. WileyNJDv5 has no native ORCID
+%% field; if FormData.authors[i].orcidId is provided, append it here too,
+%% e.g. "ORCID: 0000-...".
+\corres{\email{}}
+
+%% Abstract -> FormData.abstract
+\abstract[Abstract]{}
+
+%% Keywords -> FormData.keywords, joined using FormData.keywordSeparator
+\keywords{}
+
+\maketitle
+
+%% One \section{} per entry the user checked in FormData.keySections
+%% (Introduction, Literature Review, Methodology, Experimentation,
+%% Results, Discussion). Generate only the sections that were checked -
+%% do not invent additional ones, add one-word placeholders.
+%% Always include a Conclusions section driven by FormData.conclusion.
+
+%% ALways add label to each section and table 
+\section{Introduction}\label{sec:intro}
+
+%% Do not change this table . Uses the Wiley full-width table* pattern.
+\begin{table*}[!h]%
+\caption{Placeholder table caption.\label{tab:placeholder}}
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}llll@{}}
+\toprule
+Column A & Column B & Column C & Column D \\
+\midrule
+-- & -- & -- & -- \\
+-- & -- & -- & -- \\
+\bottomrule
+\end{tabular*}
+\end{table*}
+
+\section{Conclusions}\label{sec:conclusions}
+
+%% Backmatter/Declarations. Use \bmsection*{} for
+%% unnumbered headings. Only include a block if the corresponding
+%% FormData field is non-empty:
+%%   FormData.fundingStatement        -> "Financial disclosure"
+%%   FormData.conflictOfInterest      -> "Conflict of interest"
+%%   FormData.dataAvailability        -> "Data Availability Statement"
+%%   FormData.ethicsApproval          -> "Ethics Approval"
+%%   FormData.consentForPublication   -> "Consent for Publication"
+%%   FormData.authorContributions     -> "Author Contributions"
+%%   FormData.generativeAI            -> "Generative AI Disclosure"
+%% (FormData.creditStatement is Elsevier-only - never include it here.)
+%% Acknowledgments also uses \bmsection*, only if content exists:
+\bmsection*{Acknowledgments}
+
+%% Bibliography style follows the documentclass option (HARVARD/AMA/etc.),
+%% which should match FormData.referencingStyle. If FormData.bibliographyText
+%% or an uploaded .bib file (FormData.bibliography) is present, keep
+%% \bibliography{...}; otherwise generate a placeholder reference matching
+%% the chosen style.
+\bibliography{wileyNJD-AMA}
+
+\end{document}
+%% End of trimmed WileyNJD skeleton.

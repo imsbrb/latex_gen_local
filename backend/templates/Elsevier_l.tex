@@ -1,0 +1,140 @@
+%% Blank Elsevier (elsarticle) article skeleton, trimmed to fields this app collects.
+%%
+%% Base mode is "preprint" (review-stage, single column, wide spacing) -
+%% matches this app's submission-stage focus. "final" mode (camera-ready)
+%% requires also picking a page-format preset (1p/3p/5p - see below);
+%% not something this app currently asks the user to choose.
+%%
+%% twocolumn is a separate toggle from the page-format preset, and maps
+%% to FormData.columnLayout (add "twocolumn" for double, omit for single).
+%% authoryear/num class options map to FormData.referencingStyle
+%% (authoryear for APA/Harvard, num for IEEE/Vancouver-style numbering).
+\documentclass[preprint,12pt,authoryear]{elsarticle}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+%% Journal name - not currently a FormData field; leave as a placeholder
+%% or drop this line entirely.
+\journal{}
+
+\begin{document}
+
+\begin{frontmatter}
+
+%% Title -> FormData.title
+\title{}
+
+%% One \author{}\ead{}\affiliation{} block per entry in FormData.authors -
+%% repeat for each author, do not hardcode a fixed number.
+%% \ead{} is the email command (FormData.authors[i].email).
+%% For the author where corresponding === true, add \corref{cor1} after
+%% \author{Name} and a matching \cortext[cor1]{Corresponding author}.
+%% elsarticle has no native ORCID field; if FormData.authors[i].orcidId
+%% is provided, append it via \fnref{}/\fntext{}, e.g. "ORCID: 0000-...".
+\author{}
+\ead{}
+
+\affiliation{organization={},
+            addressline={},
+            city={},
+            postcode={},
+            state={},
+            country={}}
+
+%% Abstract -> FormData.abstract
+\begin{abstract}
+
+\end{abstract}
+
+%% Highlights - Elsevier-specific; only include this block when
+%% FormData.highlights === "yes" (this app already gates the Highlights
+%% field to Elsevier only). No dedicated FormData field holds the
+%% highlight text itself - use short bullets summarizing FormData.abstract
+%% or FormData.conclusion.
+\begin{highlights}
+\item
+\item
+\end{highlights}
+
+%% Keywords -> FormData.keywords. Note: elsarticle requires \sep between
+%% keyword entries in the .tex source itself, regardless of what
+%% FormData.keywordSeparator was set to for display purposes elsewhere.
+\begin{keyword}
+
+\end{keyword}
+
+\end{frontmatter}
+
+%% One \section{} per entry the user checked in FormData.keySections
+%% (Introduction, Literature Review, Methodology, Experimentation,
+%% Results, Discussion). Generate only the sections that were checked -
+%% do not invent additional ones. Always include a Conclusion section
+%% driven by FormData.conclusion.
+\section{Introduction}
+\label{sec:intro}
+
+%% Placeholder table (always include exactly one, in this section only) -
+%% lets caption/table font size fields be visually verified in the
+%% compiled output.
+\begin{table}[H]
+\centering
+\begin{tabular}{l c r}
+  Column A & Column B & Column C \\
+  -- & -- & -- \\
+  -- & -- & -- \\
+\end{tabular}
+\caption{Placeholder table caption.}\label{tab:placeholder}
+\end{table}
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+%% Acknowledgment - not compulsory; keep brief, include only if content exists.
+\section*{Acknowledgment}
+
+%% Declarations. Elsevier convention uses individual \section*{} headings
+%% (not an itemized list like Springer, and not \bmsection* like Wiley).
+%% Include a block only if the corresponding FormData field is non-empty:
+%%   FormData.fundingStatement        -> "Funding"
+%%   FormData.conflictOfInterest      -> "Declaration of Competing Interest"
+%%   FormData.dataAvailability        -> "Data Availability"
+%%   FormData.ethicsApproval          -> "Ethics Approval"
+%%   FormData.consentForPublication   -> "Consent for Publication"
+%%   FormData.authorContributions     -> "Author Contributions"
+%%   FormData.generativeAI            -> "Declaration of Generative AI Use"
+%%   FormData.creditStatement         -> "CRediT authorship contribution
+%%     statement" - Elsevier is the ONE publisher where this field
+%%     applies (this app already gates it to Elsevier only on Page 3).
+%%     Distinct from the free-text "Author Contributions" section above -
+%%     CRediT uses the standardized contributor-role taxonomy.
+\section*{Funding}
+
+\section*{Declaration of Competing Interest}
+
+\section*{Data Availability}
+
+\section*{CRediT authorship contribution statement}
+
+%% Appendix - not tied to a FormData field. elsarticle uses the bare
+%% \appendix command; sections after it are lettered, not numbered.
+\appendix
+\section{}
+\label{app:1}
+
+\subsection{}
+\label{app:1.1}
+
+%% Bibliography style -> FormData.referencingStyle (elsarticle-harv for
+%% author-year, elsarticle-num for numbered). If FormData.bibliographyText
+%% or an uploaded .bib file (FormData.bibliography) is present, keep
+%% \bibliographystyle{}+\bibliography{}; otherwise use a manual
+%% thebibliography block with a placeholder entry matching the chosen style.
+\begin{thebibliography}{00}
+
+\bibitem{}
+
+\end{thebibliography}
+
+\end{document}
+%% End of trimmed elsarticle skeleton.

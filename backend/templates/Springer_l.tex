@@ -1,0 +1,130 @@
+%% Blank Springer Nature (sn-jnl) article skeleton, trimmed to fields this app collects.
+%%
+%% Pick ONE \documentclass line - this also determines citation style,
+%% so it should be chosen based on FormData.referencingStyle;
+%%   sn-basic          -> FormData.referencingStyle='Basic'
+%%   sn-vancouver-num   -> FormData.referencingStyle='VancouverNumbered'
+%%   sn-vancouver-ay    -> FormData.referencingStyle='VacouverAuthorYear'
+%%   sn-apa             -> FormData.referencingStyle='APA' 
+%%   sn-mathphys-num    -> FormData.referencingStyle= 'MathPhysNumbered'
+%%   sn-mathphys-ay     -> FormData.referencingStyle= 'MathPhysAuthorYear'
+%%   sn-nature          -> FormData.referencingStyle= 'Nature'
+%%   sn-chicago         -> FormData.referencingStyle= 'Chicago'
+%%   sn-aps             -> FormData.referencingStyle= 'APS'
+\documentclass[pdflatex,sn-mathphys-num]{sn-jnl}
+
+\usepackage{graphicx}%
+\usepackage{multirow}%
+\usepackage{amsmath,amssymb,amsfonts}%
+\usepackage[title]{appendix}%
+\usepackage{manyfoot}%
+\usepackage{booktabs}%
+
+%% Standard Springer formatting default (confirmed in the official
+%% template) - not tied to any FormData field, just always used.
+\raggedbottom
+
+\begin{document}
+
+%% Title -> FormData.title
+\title[]{}
+
+%% One \author[n]{}\email{} block per entry in FormData.authors - repeat
+%% for each author, do not hardcode a fixed number. \author*[...] marks
+%% the corresponding author (FormData.authors[i].corresponding === true).
+%% Name parts: \fnm{} = firstName, \sur{} = lastName.
+%% The numeric list in [ ] ties each author to one or more \affil[...]
+%% blocks below - reuse the same number for authors sharing an affiliation.
+%% DO NOT fill in any entry that is not provided, leave it blank
+\author*[1]{\fnm{} \sur{}}\email{}
+
+%% One \affil[n]{} per distinct affiliation, matching the [n] used above.
+\affil*[1]{\orgdiv{}, \orgname{}, \orgaddress{\street{}, \city{}, \postcode{}, \state{}, \country{}}}
+
+%% Abstract -> FormData.abstract. Unstructured form (below) is the
+%% default; only use the structured Purpose/Methods/Results/Conclusion
+%% form if the target journal explicitly permits it.
+\abstract{}
+
+%% Keywords -> FormData.keywords, joined using FormData.keywordSeparator
+\keywords{}
+
+\maketitle
+
+%% One \section{} per entry the user checked in FormData.keySections
+%% (Introduction, Literature Review, Methodology, Experimentation,
+%% Results, Discussion). Generate only the sections that were checked -
+%% do not invent additional ones. Always include a Conclusion section
+%% driven by FormData.conclusion.
+\section{Introduction}\label{sec:intro}
+
+%% Placeholder table (always include exactly one, in this section only) -
+%% lets caption/table font size fields be visually verified in the
+%% compiled output. Uses booktabs rules; \botrule (not \bottomrule) is
+%% this class's convention for the final rule.
+\begin{table}[H]
+\caption{Placeholder table caption.}\label{tab:placeholder}%
+\begin{tabular}{@{}llll@{}}
+\toprule
+Column A & Column B & Column C & Column D \\
+\midrule
+-- & -- & -- & -- \\
+-- & -- & -- & -- \\
+\botrule
+\end{tabular}
+\end{table}
+
+\section{Conclusion}\label{sec:conclusion}
+
+\backmatter
+
+%% Not compulsory; keep brief if included, only if content exists.
+\bmhead{Acknowledgements}
+
+%% ---------------------------------------------------------------
+%% Declarations - standardized section most Springer journals require.
+%% If a subsection isn't selected or is empty, keep the heading and write
+%% "Not applicable" rather than omitting it.
+%% Maps directly onto FormData's declaration fields:
+%%   FormData.fundingStatement        -> Funding
+%%   FormData.conflictOfInterest      -> Conflict of interest/Competing interests
+%%   FormData.ethicsApproval          -> Ethics approval and consent to participate
+%%   FormData.consentForPublication   -> Consent for publication
+%%   FormData.dataAvailability        -> Data availability
+%%   FormData.authorContributions     -> Author contribution
+%%   FormData.generativeAI            -> Generative AI use
+%% (FormData.creditStatement is Elsevier-only - never include it here.)
+%% ---------------------------------------------------------------
+\section*{Declarations}
+
+\begin{itemize}
+\item Funding
+\item Conflict of interest/Competing interests
+\item Ethics approval and consent to participate
+\item Consent for publication
+\item Data availability
+\item Author contribution
+\item Generative AI use
+\end{itemize}
+
+%% Appendices - use the "appendices" environment (from the appendix
+%% package), not the bare \appendix command. Not tied to a FormData
+%% field. Nature Portfolio submissions should title this "Extended Data"
+%% instead.
+\begin{appendices}
+
+\section{}\label{app:1}
+
+\subsection{}\label{app:1.1}
+
+\end{appendices}
+
+%% Bibliography style follows the documentclass option chosen above,
+%% which should match FormData.referencingStyle. If FormData.bibliographyText
+%% or an uploaded .bib file (FormData.bibliography) is present, keep
+%% \bibliography{...}; otherwise generate a placeholder reference
+%% matching the chosen style.
+\bibliography{sn-bibliography}
+
+\end{document}
+%% End of trimmed Springer Nature (sn-jnl) skeleton.
